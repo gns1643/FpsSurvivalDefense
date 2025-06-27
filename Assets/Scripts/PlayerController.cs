@@ -90,7 +90,9 @@ public class PlayerController : MonoBehaviour
             applySpeed = walkSpeed;
             applyCrouchPosY = originPosY;
         }
+        //수동으로 카메라 localPosition 변경
         //theCamera.transform.localPosition = new Vector3(theCamera.transform.localPosition.x, applyCrouchPosY, theCamera.transform.localPosition.z);
+        //코루틴 함수를 이용한 부드러운 카메라 이동
         StartCoroutine(CrouchCoroutine());
     }
 
