@@ -47,7 +47,12 @@ public class PlayerController : MonoBehaviour
     private Camera theCamera;
 
     private Rigidbody myRigid;
-    
+
+    //달리기&겉기 애니메이션을 위해 불러옴
+    [SerializeField]
+    private Animator currentHand;
+
+
 
     void Start()
     {
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        IsWalk();
         IsGround();
         TryJump();
         TryRun();
@@ -67,6 +73,19 @@ public class PlayerController : MonoBehaviour
         Move();
         CameraRotation();
         CharacterRotation();
+    }
+
+    void IsWalk()
+    {
+        if ((Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f 
+            || Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f) && isGround)
+        {
+            currentHand.SetBool("Walk", true);
+        }
+        else
+        {
+            currentHand.SetBool("Walk", false);
+        }
     }
 
     void TryCrouch()
@@ -154,12 +173,14 @@ public class PlayerController : MonoBehaviour
             Crouch();
         isRun = true;
         applySpeed = runSpeed;
+        currentHand.SetBool("Run", true);
     }
 
     void RunningCancel()
     {
         isRun = false;
         applySpeed = walkSpeed;
+        currentHand.SetBool("Run", false);
     }
     void Move()
     {
