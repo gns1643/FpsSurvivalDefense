@@ -4,22 +4,38 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
+    //현재 총
     [SerializeField]
     private Gun currentGun;
 
+    //연사 속도
     private float currentFireRate;
 
+    //효과음
     private AudioSource audioSource;
 
+    //상태 변수
     private bool isReload = false;
-    private bool isFineSightMode = false;
+
+    [HideInInspector]
+    public bool isFineSightMode = false;
 
     //원래 포지션
-    [SerializeField]
     private Vector3 originPos;
+
+    //충돌 정보
+    private RaycastHit hitInfo;
+
+    [SerializeField]
+    private Camera theCam;
+
+    //피격 이펙트
+    [SerializeField]
+    private GameObject hitEffectPrefab;
 
     private void Start()
     {
+        originPos = Vector3.zero;
         audioSource = GetComponent<AudioSource>();
     }
     void Update()
@@ -165,10 +181,20 @@ public class GunController : MonoBehaviour
         currentGun.currentBulletCount -= 1;
         PlaySE(currentGun.fireSound);
         currentGun.muzzleFlash.Play();
+        Hit();
 
         StopAllCoroutines();
         StartCoroutine(RetroActionCoroutine());
     }
+    void Hit()
+    {
+        if (Physics.Raycast(theCam.transform.position, theCam.transform.forward, out hitInfo, currentGun.range))
+        {
+            GameObject clone = Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            Destroy(clone, 2f);
+        }
+    }
+
     void PlaySE(AudioClip _clip)
     {
         audioSource.clip = _clip;
