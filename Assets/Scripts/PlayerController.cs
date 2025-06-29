@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Xml.Serialization;
 using UnityEngine;
@@ -45,8 +46,8 @@ public class PlayerController : MonoBehaviour
     //필요한 컴포넌트들
     [SerializeField]
     private Camera theCamera;
-
     private Rigidbody myRigid;
+    private GunController theGunController;
 
     //달리기&겉기 애니메이션을 위해 불러옴
     [SerializeField]
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
         applySpeed = walkSpeed;
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
+        theGunController = FindFirstObjectByType<GunController>();
     }
 
     void Update()
@@ -171,6 +173,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrouch)
             Crouch();
+
+        theGunController.CancleFinesight(); 
+
         isRun = true;
         applySpeed = runSpeed;
         currentHand.SetBool("Run", true);
