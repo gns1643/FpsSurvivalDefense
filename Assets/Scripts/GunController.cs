@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -243,5 +244,10 @@ public class GunController : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    public Gun GetGun()
+    {
+        return currentGun;
     }
 }
