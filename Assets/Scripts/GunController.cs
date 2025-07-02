@@ -27,8 +27,10 @@ public class GunController : MonoBehaviour
     //충돌 정보
     private RaycastHit hitInfo;
 
+    //필요한 컴포넌트
     [SerializeField]
     private Camera theCam;
+    private Crosshair theCrosshair;
 
     //피격 이펙트
     [SerializeField]
@@ -38,6 +40,7 @@ public class GunController : MonoBehaviour
     {
         originPos = Vector3.zero;
         audioSource = GetComponent<AudioSource>();
+        theCrosshair = FindFirstObjectByType<Crosshair>();
     }
     void Update()
     {
@@ -51,6 +54,7 @@ public class GunController : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire2") && !isReload)
         {
+            
             FineSight();
         }
     }
@@ -59,6 +63,7 @@ public class GunController : MonoBehaviour
     {
         if (isFineSightMode)
         {
+
             FineSight();
         }
     }
@@ -66,8 +71,8 @@ public class GunController : MonoBehaviour
     void FineSight()
     {
         isFineSightMode = !isFineSightMode;
-        Debug.Log(isFineSightMode);
         currentGun.anim.SetBool("FineSightMod", isFineSightMode);
+        theCrosshair.FineSightAnimation(isFineSightMode);
 
         if (isFineSightMode)
         {
@@ -178,6 +183,7 @@ public class GunController : MonoBehaviour
 
     void Shoot()
     {
+        theCrosshair.FireAnimation();
         currentFireRate = currentGun.fireRate; // 연사 속도 재계산
         currentGun.currentBulletCount -= 1;
         PlaySE(currentGun.fireSound);
@@ -189,7 +195,9 @@ public class GunController : MonoBehaviour
     }
     void Hit()
     {
-        if (Physics.Raycast(theCam.transform.position, theCam.transform.forward, out hitInfo, currentGun.range))
+        if (Physics.Raycast(theCam.transform.position, theCam.transform.forward + new Vector3
+            (Random.Range(-theCrosshair.GetAccuracy() - currentGun.accuracy, theCrosshair.GetAccuracy() + currentGun.accuracy)
+            , Random.Range(-theCrosshair.GetAccuracy() - currentGun.accuracy, theCrosshair.GetAccuracy() + currentGun.accuracy), 0), out hitInfo, currentGun.range))
         {
             GameObject clone = Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             Destroy(clone, 2f);
@@ -249,5 +257,10 @@ public class GunController : MonoBehaviour
     public Gun GetGun()
     {
         return currentGun;
+    }
+
+    public bool GetFineSightMode()
+    {
+        return isFineSightMode;
     }
 }
