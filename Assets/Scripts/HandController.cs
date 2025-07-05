@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class HandController : CloseAxeController
+public class HandController : CloseWeaponController
 {
     private void Start()
     {

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AxeController : CloseAxeController
+public class AxeController : CloseWeaponController
 {
     //활성화 여부
     public static bool isActivate = false;

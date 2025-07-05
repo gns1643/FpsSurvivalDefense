@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PickAxeController : CloseAxeController
+public class PickAxeController : CloseWeaponController
 {
     //활성화 여부
     public static bool isActivate = true;
@@ -23,6 +23,10 @@ public class PickAxeController : CloseAxeController
         {
             if (CheckObject())
             {
+                if(hitInfo.transform.tag == "Rock")
+                {
+                    hitInfo.transform.GetComponent<Rock>().Mining();
+                }
                 isSwing = false;
                 Debug.Log(hitInfo.transform.name);
             }
