@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody myRigid;
     private GunController theGunController;
     private Crosshair theCrosshair;
+    private StatusController theStatusController;
 
     //달리기&겉기 애니메이션을 위해 불러옴
     [SerializeField]
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         theGunController = FindFirstObjectByType<GunController>();
         theCrosshair = FindFirstObjectByType<Crosshair>();
+        theStatusController = FindFirstObjectByType<StatusController>();
 
         //변수 초기화 영역
         applySpeed = walkSpeed;
@@ -188,7 +190,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrouch)
             Crouch();
-        
+
+        theStatusController.DecreaseStamina(100);
         myRigid.linearVelocity = transform.up * jumpForce;
     }
 
@@ -215,6 +218,7 @@ public class PlayerController : MonoBehaviour
         applySpeed = runSpeed;
         currentHand.SetBool("Run", true);
         theCrosshair.RunningAnimation(isRun);
+        theStatusController.DecreaseStamina(10);
     }
 
     void RunningCancel()
