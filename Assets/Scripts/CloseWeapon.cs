@@ -1,8 +1,14 @@
 using UnityEngine;
 
-public class Hand : MonoBehaviour
+public class CloseWeapon : MonoBehaviour
 {
-    public string handName; // 맨손/너클
+    public string closeWeaponName; // 근접무기 이름
+
+    //웨폰 유형
+    public bool isAxe;
+    public bool isHand;
+    public bool isPickaxe;
+
     public float range; // 공격범위
     public int damege; // 공격력
     public float workSpeed; //작업속도

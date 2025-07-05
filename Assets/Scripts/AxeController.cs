@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class HandController : CloseAxeController
+public class AxeController : CloseAxeController
 {
+    //활성화 여부
+    public static bool isActivate = false;
     private void Start()
     {
         WeaponManager.currentWeapon = currentCloseWeaponHand.transform;
         WeaponManager.currentWeaponAnim = currentCloseWeaponHand.anim;
     }
-    //활성화 여부
-    public static bool isActivate = false;
     void Update()
     {
         if (isActivate)
