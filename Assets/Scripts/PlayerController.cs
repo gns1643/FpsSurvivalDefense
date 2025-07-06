@@ -90,8 +90,12 @@ public class PlayerController : MonoBehaviour
             MoveCheck();
             lastCheckTime = Time.time;
         }
-        CameraRotation();
-        CharacterRotation();
+        if (!Inventory.inventoryActivated)
+        {
+            CameraRotation();
+            CharacterRotation();
+        }
+        
     }
     void MoveCheck()
     {

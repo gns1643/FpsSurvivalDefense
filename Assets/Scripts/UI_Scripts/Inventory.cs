@@ -71,7 +71,6 @@ public class Inventory : MonoBehaviour
         {
             if (slots[i].item == null)
             {
-                Debug.Log("æ∆¿Ã≈€»πµÊ!");
                 slots[i].AddItem(_item, _count);
                 return;
             }
