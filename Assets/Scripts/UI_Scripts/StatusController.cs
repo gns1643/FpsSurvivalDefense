@@ -64,6 +64,7 @@ public class StatusController : MonoBehaviour
         currentDp = dp;
         currentSp = sp;
         currentHungry = hungry;
+        currentThirsty = thirsty;
         currentSatisfy = satisfy;
     }
 
@@ -139,6 +140,69 @@ public class StatusController : MonoBehaviour
         images_Gauge[THRISTY].fillAmount = (float)currentThirsty / thirsty;
         images_Gauge[SATISFY].fillAmount = (float)currentSatisfy / satisfy;
     }
+    public void IncreaseHp(int _count)
+    {
+        if (currentHp + _count >= hp)
+            currentHp = hp;
+        else
+            currentHp += _count;
+    }
+    public void DecreaseHp(int _count)
+    {
+        if(currentDp > 0)
+        {
+            DecreaseDp(_count);
+            return;
+        }
+        currentHp -= _count;
+        if(currentHp < 0)
+        {
+            Debug.Log("캐릭터의 hp가 0이 됨");
+        }
+    }
+    public void IncreaseDp(int _count)
+    {
+        if (currentDp + _count >= dp)
+            currentDp = dp;
+        else
+            currentDp += _count;
+    }
+    public void DecreaseDp(int _count)
+    {
+        currentDp -= _count;
+        if (currentDp < 0)
+        {
+            Debug.Log("캐릭터의 dp가 0이 됨");
+        }
+    }
+    public void IncreaseHungry(int _count)
+    {
+        if (currentHungry + _count >= hungry)
+            currentHungry = hungry;
+        else
+            currentHungry += _count;
+    }
+    public void DecreaseHungry(int _count)
+    {
+        if (currentHungry - _count < 0)
+            currentHungry = 0;
+        else
+            currentHungry -= _count;
+    }
+    public void IncreaseThirsty(int _count)
+    {
+        if (currentThirsty + _count >= thirsty)
+            currentThirsty = thirsty;
+        else
+            currentThirsty += _count;
+    }
+    public void DecreaseThirsty(int _count)
+    {
+        if (currentThirsty - _count < 0)
+            currentThirsty = 0;
+        else
+            currentThirsty -= _count;
+    }
     public void DecreaseStamina(int _count)
     {
         spUsed = true;
@@ -152,5 +216,9 @@ public class StatusController : MonoBehaviour
             currentSp = 0;
         }
 
+    }
+    public int GetCurrentSp()
+    {
+        return currentSp;
     }
 }

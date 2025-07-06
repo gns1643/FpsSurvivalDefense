@@ -2130,9 +2130,9 @@ MonoBehaviour:
   spIncreaseSpeed: 10
   spRechargeTime: 300
   dp: 100
-  hungry: 100
+  hungry: 300
   hungryDescreaseTime: 2
-  thirsty: 100
+  thirsty: 300
   thirstyDescreaseTime: 1
   satisfy: 100
   images_Gauge:
