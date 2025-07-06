@@ -17,6 +17,9 @@ public class ActionController : MonoBehaviour
     //»ç¿ëÇÒ ÄÄÆ÷³ÍÆ®
     [SerializeField]
     private TMP_Text actionText;
+    [SerializeField]
+    private Inventory theInventory;
+
 
     private void Update()
     {
@@ -39,6 +42,7 @@ public class ActionController : MonoBehaviour
             if(hitInfo.transform != null)
             {
                 Debug.Log(hitInfo.transform.GetComponent<ItemPickup>().item.itemName + "È¹µæ");
+                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickup>().item);
                 Destroy(hitInfo.transform.gameObject);
                 InfoDisappear();
             }
