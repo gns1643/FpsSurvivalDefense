@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public Item item; //획득한 아이템
     public int itemCount; //아이템 개수
@@ -15,6 +15,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     [SerializeField]
     private GameObject go_Countimage;
     private ItemEffectDatabase theItemEffectDatabase;
+    
     void Start()
     {
         theItemEffectDatabase = FindFirstObjectByType<ItemEffectDatabase>();
@@ -132,5 +133,16 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             DragSlot.instance.dragSlot.ClearSlot();
         }
 
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(item != null)
+            theItemEffectDatabase.ShowToolTip(item, transform.position);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        theItemEffectDatabase.HideToolTip();
     }
 }

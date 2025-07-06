@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Potion_Yellow
   m_EditorClassIdentifier: 
   itemName: Potion_Yellow
+  itemDesc: "\uBA39\uC73C\uBA74 \uBAB8\uC5D0 \uC88B\uB2E4.\nSP, \uBAA9\uB9C8\uB984,
+    \uBC30\uACE0\uD514 \uC0C1\uC2B9"
   itemType: 1
   itemImage: {fileID: 21300000, guid: 10bef768c7613a943ba3bab5bafaf6f7, type: 3}
   itemPrefab: {fileID: 7639364825527890136, guid: 6a9c9c843774c1a4a9015dc9f28b1fc3, type: 3}
