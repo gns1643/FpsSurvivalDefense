@@ -127,7 +127,7 @@ public class Pig : MonoBehaviour
         anim.SetBool("Walking", isWalking);
         applySpeed = walkSpeed;
     }
-    void Run(Vector3 _targetPos)
+    public void Run(Vector3 _targetPos)
     {
         direction = Quaternion.LookRotation(transform.position - _targetPos).eulerAngles;
 
