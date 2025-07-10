@@ -269,8 +269,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 173161113}
-  - component: {fileID: 173161115}
   - component: {fileID: 173161114}
+  - component: {fileID: 173161115}
   - component: {fileID: 173161119}
   - component: {fileID: 173161120}
   - component: {fileID: 173161117}
@@ -316,6 +316,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGun: {fileID: 1829996779}
   isFineSightMode: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 247
   theCam: {fileID: 330585545}
   hitEffectPrefab: {fileID: 1831690232641715984, guid: 87080ba5a8b888140aa44d70abfb36cf, type: 3}
 --- !u!114 &173161115
@@ -331,6 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCloseWeaponHand: {fileID: 195982973}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 247
 --- !u!82 &173161116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -484,6 +490,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCloseWeaponHand: {fileID: 767865964}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 247
 --- !u!114 &173161120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +506,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCloseWeaponHand: {fileID: 483291905}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 247
 --- !u!1 &180173859
 GameObject:
   m_ObjectHideFlags: 0
