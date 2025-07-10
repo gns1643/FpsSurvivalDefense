@@ -1857,7 +1857,7 @@ MonoBehaviour:
   isHand: 0
   isPickaxe: 1
   range: 3
-  damege: 0
+  damege: 1
   workSpeed: 0
   attackDelay: 1.8
   attackDelayA: 0.8
@@ -3724,9 +3724,10 @@ GameObject:
   - component: {fileID: 989338852}
   - component: {fileID: 989338851}
   - component: {fileID: 989338854}
+  - component: {fileID: 989338855}
   m_Layer: 0
   m_Name: Pig
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3809,12 +3810,126 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalName: Pig
   hp: 2
-  walkSpeed: 2
+  walkSpeed: 1
+  runSpeed: 4
   walkTime: 5
   waitTime: 4
+  runTime: 3
   anim: {fileID: 1574653155}
   rigid: {fileID: 989338852}
   boxCol: {fileID: 989338851}
+  sound_pig_Normal:
+  - {fileID: 8300000, guid: eb4c47d869bac0d4389d61f444798151, type: 3}
+  - {fileID: 8300000, guid: 5e4cd9369958d8047a764751b59479ee, type: 3}
+  - {fileID: 8300000, guid: efb8329804439874793aaab9f3b1906c, type: 3}
+  sound_pig_Hurt: {fileID: 8300000, guid: c6b7b3d8bb7fafb45956fbf1620a10d1, type: 3}
+  sound_pig_Dead: {fileID: 8300000, guid: 0648061b548e96a4091d54928ce353d3, type: 3}
+--- !u!82 &989338855
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989338850}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.33333334
+      value: 1
+      inSlope: -3.0011995
+      outSlope: -3.0011995
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6666667
+      value: 0.5
+      inSlope: -0.7502999
+      outSlope: -0.7502999
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.33346638
+      outSlope: -0.33346638
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.016021729
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1055457651
 GameObject:
   m_ObjectHideFlags: 0
@@ -11050,8 +11165,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: bca3f2616b44066418ba37379608500d, type: 3}
   - name: Rock_Destroy
     clip: {fileID: 8300000, guid: cd64d45e61d6710489961f266412498f, type: 3}
-  - name: 
-    clip: {fileID: 0}
+  - name: Animal_Hit
+    clip: {fileID: 8300000, guid: be04499711c68744f89203a089d4de50, type: 3}
   - name: 
     clip: {fileID: 0}
   - name: 
