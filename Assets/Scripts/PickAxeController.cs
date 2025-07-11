@@ -27,12 +27,17 @@ public class PickAxeController : CloseWeaponController
                 {
                     hitInfo.transform.GetComponent<Rock>().Mining();
                 }
-                else if(hitInfo.transform.tag == "NPC")
+                else if(hitInfo.transform.tag == "WeakAnimal")
                 {
                     SoundManager.instance.PlaySE("Animal_Hit");
-                    hitInfo.transform.GetComponent<Pig>().Damage(currentCloseWeaponHand.damege, transform.position);
+                    hitInfo.transform.GetComponent<WeakAnimal>().Damage(currentCloseWeaponHand.damege, transform.position);
                 }
-                    isSwing = false;
+                //else if (hitInfo.transform.tag == "StrongAnimal")
+                //{
+                //    SoundManager.instance.PlaySE("Animal_Hit");
+                //    hitInfo.transform.GetComponent<WeakAnimal>().Damage(currentCloseWeaponHand.damege, transform.position);
+                //}
+                isSwing = false;
                 Debug.Log(hitInfo.transform.name);
             }
             yield return null;
