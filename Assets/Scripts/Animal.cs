@@ -81,7 +81,7 @@ public class Animal : MonoBehaviour
     {
         currentTime = walkTime;
         isWalking = true;
-        Debug.Log("°È±â");
+        //Debug.Log("°È±â");
         anim.SetBool("Walking", isWalking);
         nav.speed = walkSpeed;
     }

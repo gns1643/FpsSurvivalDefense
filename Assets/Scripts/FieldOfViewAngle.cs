@@ -49,7 +49,7 @@ public class FieldOfViewAngle : MonoBehaviour
                     {
                         if(_hit.transform.name == "Player")
                         {
-                            Debug.Log("플레이어가 돼지의 시야 내에 있음 !");
+                            //Debug.Log("플레이어가 돼지의 시야 내에 있음 !");
                             thePig.Run(_hit.transform.position);
                             Debug.DrawRay(transform.position + transform.up, _direction, Color.blue);
                         }

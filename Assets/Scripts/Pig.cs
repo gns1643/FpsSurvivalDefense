@@ -28,18 +28,18 @@ public class Pig : WeakAnimal
     void Wait()
     {
         currentTime = waitTime;
-        Debug.Log("대기");
+        //Debug.Log("대기");
     }
     void Eat()
     {
         currentTime = waitTime;
-        Debug.Log("먹기");
+        //Debug.Log("먹기");
         anim.SetTrigger("Eat");
     }
     void Peek()
     {
         currentTime = waitTime;
-        Debug.Log("찾기");
+        //Debug.Log("찾기");
         anim.SetTrigger("Peek");
     }
 }
