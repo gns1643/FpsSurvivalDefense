@@ -79,22 +79,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        IsWalk();
-        IsGround();
-        TryJump();
-        TryRun();
-        TryCrouch();
-        Move();
-        if (Time.time - lastCheckTime >= checkInterval)
+        if (GameManager.canPlayerMove)
         {
-            MoveCheck();
-            lastCheckTime = Time.time;
-        }
-        if (!Inventory.inventoryActivated)
-        {
+            IsWalk();
+            IsGround();
+            TryJump();
+            TryRun();
+            TryCrouch();
+            Move();
+            if (Time.time - lastCheckTime >= checkInterval)
+            {
+                MoveCheck();
+                lastCheckTime = Time.time;
+            }
             CameraRotation();
             CharacterRotation();
         }
+        
         
     }
     void MoveCheck()

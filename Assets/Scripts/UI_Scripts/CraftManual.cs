@@ -39,8 +39,7 @@ public class CraftManual : MonoBehaviour
         go_Prefab = craft_Fire[_slotNumber].go_Prefab;
         isPreviewActivated = true;
         go_BaseUI.SetActive(false);
-
-
+        GameManager.isOpenCraftMenu = false;
     }
 
     void Update()
@@ -112,11 +111,13 @@ public class CraftManual : MonoBehaviour
     {
         isActivated = true;
         go_BaseUI.SetActive(true);
+        GameManager.isOpenCraftMenu = true;
     } 
     void CloseWindow()
     {
         
         isActivated = false;
         go_BaseUI.SetActive(false);
+        GameManager.isOpenCraftMenu = false;
     }
 }
