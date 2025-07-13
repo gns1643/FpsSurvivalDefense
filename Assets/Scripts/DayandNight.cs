@@ -25,7 +25,7 @@ public class DayandNight : MonoBehaviour
         {//태양이 지고있으면
             isNight = true;
         }
-        if(transform.eulerAngles.x <= 10)
+        if(transform.eulerAngles.x >= 340)
         {//태양이 뜨고있으면
             isNight = false;
         }
