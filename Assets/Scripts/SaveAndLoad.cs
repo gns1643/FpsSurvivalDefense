@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -5,6 +7,11 @@ using UnityEngine;
 public class SaveDate
 {
     public Vector3 playerPos;
+    public Vector3 playerRot;
+
+    public List<int> invenArrayNum = new List<int>();
+    public List<string> invenItemName = new List<string>();
+    public List<int> invenItemNum = new List<int>();
 }
 public class SaveAndLoad : MonoBehaviour
 {
@@ -14,6 +21,8 @@ public class SaveAndLoad : MonoBehaviour
     private string SAVE_FILENAME = "/SaveFile.txt";
 
     private PlayerController thePlayer;
+    private Inventory theInven;
+    
     void Start()
     {
         SAVE_DATA_DIRECTORY = Application.dataPath + "/Saves/";
@@ -24,8 +33,21 @@ public class SaveAndLoad : MonoBehaviour
     public void SaveData()
     {
         thePlayer = FindFirstObjectByType<PlayerController>();
+        theInven = FindFirstObjectByType<Inventory>();
 
         saveDate.playerPos = thePlayer.transform.position;
+        saveDate.playerRot = thePlayer.transform.eulerAngles;
+
+        Slot[] slots = theInven.GetSlots();
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item != null)
+            {
+                saveDate.invenArrayNum.Add(i);
+                saveDate.invenItemName.Add(slots[i].item.itemName);
+                saveDate.invenItemNum.Add(slots[i].itemCount);
+            }
+        }
 
         string json = JsonUtility.ToJson(saveDate);
 
@@ -43,8 +65,15 @@ public class SaveAndLoad : MonoBehaviour
             saveDate = JsonUtility.FromJson<SaveDate>(loadJson);
 
             thePlayer = FindFirstObjectByType<PlayerController>();
+            theInven = FindFirstObjectByType<Inventory>();
 
             thePlayer.transform.position = saveDate.playerPos;
+            thePlayer.transform.eulerAngles = saveDate.playerRot;
+
+            for (int i = 0; i < saveDate.invenItemName.Count; i++)
+            {
+                theInven.LoadToInven(saveDate.invenArrayNum[i], saveDate.invenItemName[i], saveDate.invenItemNum[i]);
+            }
 
             Debug.Log("로드 완료");
         }

@@ -14731,6 +14731,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go_InventoryBase: {fileID: 1903883477}
   go_SlotParent: {fileID: 360807538}
+  items:
+  - {fileID: 11400000, guid: 1782e71e56d1d4441853483cfba101e5, type: 2}
+  - {fileID: 11400000, guid: e12696f0a088f134093913d9e72973a7, type: 2}
+  - {fileID: 11400000, guid: 239ed1657d999d943b827dbf10dc334b, type: 2}
 --- !u!224 &1798141500
 RectTransform:
   m_ObjectHideFlags: 0
